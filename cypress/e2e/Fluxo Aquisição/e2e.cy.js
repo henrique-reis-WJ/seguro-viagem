@@ -16,7 +16,7 @@ describe('Dado que quero fazer a aquisição de seguro', function () {
             this.loginData = formsData.loginData
             this.cartaoCredito = formsData.cartaoCredito
         })
-        cy.visit('/travel-form')
+        cy.visit('https://www.portoseguro.com.br/loja/seguro-viagem')
     })
 
     context('Sou um usuário sem cadastro', function () {
