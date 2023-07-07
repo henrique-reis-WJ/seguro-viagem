@@ -1,0 +1,47 @@
+
+{    
+    "shortForm": {
+        "country": "Brasil",
+        "sports": true
+    },
+
+    "leadPassager": {
+        "name": "LOIUTRB WWWEDRFCX WOLF ASXCVOPLMN WISKZTO PLAWERIOC",
+        "cpf": "266.590.640-60",
+        "birthday": "02/03/1995",
+        "bender": "Masculino",
+        "phone": "11959578684",
+        "email": "teste@putsbox.com",
+        "pep": "false"
+    },
+
+    "pepInfos": {
+
+    },
+
+    "address": {
+        "cep": "03807010",
+        "number": "201"
+    },
+
+    "otherPassager":{
+        "name": "DRACZUKA THERIVIA ZXYUOPE",
+        "cpf": "266.590.640-60",
+        "gender": "Masculino",
+        "birthday": "01/01/1975",
+        "pepOther": "false"
+    },
+
+    "loginData": {
+        "cpf": "12180688172",
+        "passLogin": "SEnha123@"
+    },
+
+    "cartaoCredito": {
+        "nCartao": "5382729846126598",
+        "validade": "0425",
+        "nameTitular": "Teste da Silva Sauro",
+        "cpfTitular": "12180688172",
+        "cvv": "329"
+    }
+}

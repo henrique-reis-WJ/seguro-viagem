@@ -1,0 +1,16 @@
+{
+  "name": "travel-automation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "author": "Henrique Reis",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "cypress": "^12.17.0",
+    "moment": "^2.29.4"
+  }
+}
