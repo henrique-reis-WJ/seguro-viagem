@@ -1,9 +1,12 @@
 import './commands'
-import fillShortFormPage from '../pages/ShortForm/fillShortFormPage'
-import plans from '../pages/Plans/plansPage'
-import fillLeadPassager from '../pages/LongForm/fillLeadPassagerPage'
-import fillOtherPassager from '../pages/LongForm/fillOtherPassagerPage'
-
+import fillShortFormPage from '../pages/Viagem/ShortForm/fillShortFormPage'
+import plans from "../pages/Plans/plansPage"
+import fillLeadPassager from '../pages/Viagem/LongForm/fillLeadPassagerPage'
+import fillOtherPassager from '../pages/Viagem/LongForm/fillOtherPassagerPage'
+import residShortPage from '../pages/Resid/fillResidShortPage'
+import fillResidLongPage from '../pages/Resid/fillResidLongPage'
+import fillRefinStep2 from '../pages/Refin/fillRefinStep2'
+import fillRefinStep3 from '../pages/Refin/fillRefinStep3'
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     return false
@@ -24,6 +27,11 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
   app.document.head.appendChild(style);
 }
+
+Cypress.Commands.add('clickButton', function(buttonName) {
+  cy.contains('button', buttonName)
+  .click()
+})
 
 Cypress.Commands.add('shortForm', function(passAge, sportsStatus, btnStatus){
 
@@ -59,78 +67,29 @@ Cypress.Commands.add('longFormOther', function(otherData) {
 
 })
 
-Cypress.Commands.add('getToken', function(shortInfo, valueResponse) {
-  cy.request({
-    method: 'POST',
-    url: 'https://integration-5ojmyuq-7ljgbfqqtgtmi.us-a1.magentosite.cloud/rest/V1/porto/quotation',
-    body: shortInfo,
-    failOnStatusCode: false
-  }).then(function(response) {
-    
-    //if(response.status == 200) {
-      expect(response.status).to.eq(200)
-      Cypress.env('tokenProposta', JSON.stringify(response.body[0].token))
-      cy.log(Cypress.env('tokenProposta'))
-   // }
+Cypress.Commands.add('shortResid', function(addressResid, home, cpfResid) {
 
-    //else if(response.status == 400) {
-     // expect(response.status).to.eq(400)
-    //  const bodyResposta = JSON.stringify(response.body.errors[0])
-    //  expect(bodyResposta).to.contains('não há planos de ofertas disponívéis')
-   // }
+  residShortPage.fillHome(addressResid, home, cpfResid)
+  
 
-  })
 })
 
-Cypress.Commands.add('getProposal', function() {
-  cy.request({
-    method: 'POST',
-    url: 'https://integration-5ojmyuq-7ljgbfqqtgtmi.us-a1.magentosite.cloud/graphql',
-    body: {
-      query: `
-      query Quotation { 
-        Quotation(token: ${Cypress.env('tokenProposta')}) {
-        products{
-            name,
-            sku,            
-            initial_date,
-            ending_date,
-            coverages,
-            payments,
-            passengers,
-            destiny,
-            budget_id,
-            offer_id
-          }
-        }
-      }`
-    }
-  }).then(function(responseProposal) {
+Cypress.Commands.add('longResid', function(numberResid, nameResid, profResid) {
 
-    const propResponse = JSON.stringify(responseProposal.body)
-    expect(propResponse).to.contains('Plano Viagem')
-    console.log(responseProposal.body)
-  })
+  fillResidLongPage.fillNum(numberResid)
+  fillResidLongPage.fillPeople(nameResid, profResid)
+  fillResidLongPage.finishForm()
+
 })
 
-Cypress.Commands.add('login', function() {
-  cy.request({
-    method: 'POST',
-    url: 'https://integration-5ojmyuq-7ljgbfqqtgtmi.us-a1.magentosite.cloud/graphql',
-    body: {
-      mutation: `{
-        generateCustomerToken(
-          email: "rodrigo.coitim@webjump.com.br",
-          password: "SEnha123!"
-        ) {
-          token
-        }
-      }
-          }
-        }
-      }`
-    }
-  }).then(function(responseLogin) {
-    console.log(responseLogin.body)
-  })
+Cypress.Commands.add('step2Refin', function(infos) {
+
+  fillRefinStep2.fillPeople(infos)
+
+  cy.get('input[name="number"]')
+  .type(address.number, {timeout:2000})
+})
+
+Cypress.Commands.add('step3Refin', function(infos) {
+  fillRefinStep3.fillStep3
 })

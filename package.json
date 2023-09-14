@@ -10,7 +10,7 @@
   "description": "",
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
-    "cypress": "^12.17.0",
+    "cypress": "^13.2.0",
     "moment": "^2.29.4"
   }
 }
