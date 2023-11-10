@@ -5,11 +5,6 @@ class checkoutPage {
         .click()
     }
 
-    cart(escolha) {
-        cy.contains('button', escolha, {timeout:30000})
-        .click()
-    }
-
     cartData(cartao) {
         cy.get('#number')
         .type(cartao.nCartao)

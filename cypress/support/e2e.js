@@ -39,10 +39,6 @@ Cypress.Commands.add('shortForm', function(passAge, sportsStatus, btnStatus){
   fillShortFormPage.fillConfirmOrigin()
   fillShortFormPage.fillDateTravelStart()
   fillShortFormPage.fillDateTravelBack()
-
-  if(passAge>0) {
-    fillShortFormPage.fillPeopleCompanion(passAge)
-  }
   
   fillShortFormPage.fillSports(sportsStatus)
   fillShortFormPage.finishFill(btnStatus)
@@ -69,15 +65,14 @@ Cypress.Commands.add('longFormOther', function(otherData) {
 
 Cypress.Commands.add('shortResid', function(addressResid, home, cpfResid) {
 
-  residShortPage.fillHome(addressResid, home, cpfResid)
+  residShortPage.fillHome(addressResid, cpfResid)
   
-
 })
 
 Cypress.Commands.add('longResid', function(numberResid, nameResid, profResid) {
 
   fillResidLongPage.fillNum(numberResid)
-  fillResidLongPage.fillPeople(nameResid, profResid)
+  fillResidLongPage.fillPeople(nameResid)
   fillResidLongPage.finishForm()
 
 })

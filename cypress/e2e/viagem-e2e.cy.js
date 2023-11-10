@@ -1,7 +1,5 @@
 import checkoutPage from "../pages/Checkout/checkoutPage"
 import loginPage from "../pages/Login/loginPage"
-import {faker} from '@faker-js/faker'
-faker.location = 'pt_BR'
 
 describe('Dado que quero fazer a aquisição de seguro', function () {
 
@@ -16,23 +14,23 @@ describe('Dado que quero fazer a aquisição de seguro', function () {
             this.loginData = formsData.loginData
             this.cartaoCredito = formsData.cartaoCredito
         })
-        cy.visit('https://www.portoseguro.com.br/loja/seguro-viagem')
+        cy.visit('https://portoseguro.com.br/loja/seguro-viagem')
     })
 
     context('Sou um usuário sem cadastro', function () {
 
         it.only("Vou viajar sozinho e não sou PEP", function () {
 
-            cy.shortForm(0, false)
+            cy.shortForm(false)
             cy.plans()
             cy.longFormLead(this.leadPassager, this.address)
 
-            //checkoutPage.paymentButton()
-            //loginPage.login(this.loginData)
-            //checkoutPage.cart("Cartão de crédito")
-            //checkoutPage.cartData(this.cartaoCredito)
-            // checkoutPage.finishPurchase()
-            // checkoutPage.sucessPage()
+            checkoutPage.paymentButton()
+            loginPage.login(this.loginData)
+            checkoutPage.cart("Cartão de crédito")
+            checkoutPage.cartData(this.cartaoCredito)
+            checkoutPage.finishPurchase()
+            checkoutPage.sucessPage()
 
         })
 

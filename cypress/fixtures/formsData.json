@@ -6,12 +6,12 @@
     },
 
     "leadPassager": {
-        "name": "Henrique Ribeiro Reis",
-        "cpf": "266.590.640-60",
-        "birthday": "02/03/1995",
+        "name": "Henrique reis",
+        "cpf": "23237344079",
+        "birthday": "28/10/1997",
         "bender": "Masculino",
         "phone": "11959578684",
-        "email": "teste@putsbox.com",
+        "email": "henrique.reis@putsbox.com",
         "pep": "false",
         "nameMae": "Teste Ribeiro Reis"
     },
@@ -31,11 +31,6 @@
         "gender": "Masculino",
         "birthday": "01/01/1975",
         "pepOther": "false"
-    },
-
-    "loginData": {
-        "cpf": "12180688172",
-        "passLogin": "SEnha123@"
     },
 
     "cartaoCredito": {

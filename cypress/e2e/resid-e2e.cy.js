@@ -1,4 +1,4 @@
-
+import checkoutPage from "../pages/Checkout/checkoutPage"
 describe('Dado que quero fazer a aquisição de seguro', function () {
 
     beforeEach(function () {
@@ -12,7 +12,7 @@ describe('Dado que quero fazer a aquisição de seguro', function () {
             this.loginData = formsData.loginData
             this.cartaoCredito = formsData.cartaoCredito
         })
-        cy.visit('https://www.portoseguro.com.br/loja/seguro-residencial')
+        cy.visit('https://portoseguro.com.br/loja/seguro-residencial')
     })
 
     context('Sou um usuário sem cadastro', function () {
@@ -23,9 +23,9 @@ describe('Dado que quero fazer a aquisição de seguro', function () {
             cy.plans()
             cy.longResid(this.address, this.leadPassager)
 
-            //checkoutPage.paymentButton()
+            checkoutPage.paymentButton()
             //loginPage.login(this.loginData)
-            //checkoutPage.cart("Cartão de crédito")
+            
             //checkoutPage.cartData(this.cartaoCredito)
             //checkoutPage.finishPurchase()
             //checkoutPage.sucessPage()

@@ -9,23 +9,14 @@ class residLongPage {
         .click()
     }
 
-    fillPeople(leadPass, prof) {
-
-        cy.get('input[name="fullName"]')
-        .type(leadPass.name)
+    fillPeople(leadPass) {
 
         cy.get('input[name="birthDate"]')
         .type(leadPass.birthday)
 
         cy.get('.select__input-container')
         .click()
-        .type('ASTROLOGO{enter}')
-
-        cy.get('input[name="phone"]')
-        .type(leadPass.phone)
-
-        cy.get('input[name="email"]')
-        .type(leadPass.email)
+        .type('ADESTR{enter}')
 
         cy.get('#sim')
         .click()

@@ -3,12 +3,12 @@ class ShortFormPage {
 
     fillCountry() {
         cy.get('.select__control input', {timeout:50000})
-        .click({force:true})
-        .type('Brasil{enter}', {force:true})
+        .click()
+        .type('Brasil{enter}')
 
         cy.get('div[data-gtm-clicktype="chips-self"]')
         .should('be.visible')
-        //.contains('Brasil')
+        .contains('Brasil')
     }
 
     fillConfirmOrigin() {
@@ -27,7 +27,7 @@ class ShortFormPage {
         .type(dayStart, '{enter}')
     }
 
-    fillDateTravelBack(volta) {
+    fillDateTravelBack() {
 
         let dateBack = new Date()
         dateBack.setDate(dateBack.getDate() + 7)  
